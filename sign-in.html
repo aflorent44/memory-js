@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Jeu de memory</title>
+  </head>
+  <body>
+    <header>
+      <h1>Se connecter</h1>
+      <nav class="menu">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="sign-up.html">S'inscrire</a></li>
+          <li><a href="sign-in.html">Se connecter</a></li>
+          <li><a href="profile.html">Profil</a></li>
+          <li><a href="game.html">Jouer</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <form id="signUpForm">
+        <div>
+          <label for="nomUtilisateur">Nom d'utilisateur</label>
+          <input
+            type="nomUtilisateur"
+            id="nomUtilisateur"
+            name="nomUtilisateur"
+            required
+          />
+        </div>
+        <div>
+          <label for="email">Entrez votre e-mail</label>
+          <input type="email" id="email" name="email" required />
+          <div>
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="password" required />
+          </div>
+        </div>
+        <button type="submit">S'inscrire</button>
+      </form>
+      <div id="errorMessage"></div>
+    </main>
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
