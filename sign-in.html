@@ -20,25 +20,21 @@
       </nav>
     </header>
     <main>
-      <form id="signUpForm">
+      <form id="signInForm">
         <div>
-          <label for="nomUtilisateur">Nom d'utilisateur</label>
+          <label for="username-email">Nom d'utilisateur ou e-mail</label>
           <input
-            type="nomUtilisateur"
-            id="nomUtilisateur"
-            name="nomUtilisateur"
+            type="text"
+            id="username-email"
+            name="username-email"
             required
           />
         </div>
         <div>
-          <label for="email">Entrez votre e-mail</label>
-          <input type="email" id="email" name="email" required />
-          <div>
-            <label for="password">Mot de passe</label>
-            <input type="password" id="password" name="password" required />
-          </div>
+          <label for="password">Mot de passe</label>
+          <input type="password" id="password" name="password" required />
         </div>
-        <button type="submit">S'inscrire</button>
+        <button type="submit">Se connecter</button>
       </form>
       <div id="errorMessage"></div>
     </main>
