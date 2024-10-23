@@ -1,3 +1,12 @@
+/**
+ * Check Username
+ * @param {string} username
+ * @returns
+ */
+const usernameValidator = (username) => {
+  const usernameRegex = /^(?!.*[_-]{2})[A-Za-z0-9][A-Za-z0-9_-]{3,15}[A-Za-z0-9]$/;
+  return usernameRegex.test(username);
+};
 
 /**
  * Check Email
@@ -15,8 +24,8 @@ const emailValidator = (email) => {
  * @returns
  */
 const passwordValidator = (password) => {
-  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^-_&*])(?=.{6,})/;
+  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{6,}$/;
   return passwordRegex.test(password);
 };
 
-export { emailValidator, passwordValidator };
+export { usernameValidator, emailValidator, passwordValidator };

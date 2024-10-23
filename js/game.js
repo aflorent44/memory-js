@@ -11,9 +11,9 @@ function initGame(game) {
 
   const grid = document.createElement("section"); //création d'une section qui correspond à chaque carte
   grid.setAttribute("class", "grid"); //attribution d'une classe et d'un attribut grid
-  game.appendChild(grid); // ???
+  game.appendChild(grid); // // ajout de la grille au DOM
 
-  let gameGrid = cardsArray.concat(cardsArray); //clonage du tableau pour créer le plateau avec les cartes en double
+  let gameGrid = cardsArray.concat(cardsArray); //duplication des cartes
   gameGrid.sort(() => 0.5 - Math.random()); // randomisation de l'ordre des éléments dans le plateau
 
   gameGrid.forEach((item) => {
@@ -63,10 +63,13 @@ function initGame(game) {
   let count = 0; //utilisé pour compter le nombre de cartes sélectionnées
   let previousTarget = null; //utilisé pour ne pas sélectionner deux fois la même carte
   let delay = 1200;
+  let nbGuess = 0;
   let score = 0;
+  const $affScore = document.getElementById("score");
+  // console.log(affScore);
+  // let phraseScore = 'test'
 
-  /*let affScore = document.getElementById("score");
-affScore = this.insertAdjacentHTML("afterbegin",`le score est de ${score}`)*/
+  //affScore = this.insertAdjacentHTML("beforebegin",`le score est de ${score}`)
 
   // Add event listener to grid
   grid.addEventListener("click", function (event) {
@@ -90,20 +93,20 @@ affScore = this.insertAdjacentHTML("afterbegin",`le score est de ${score}`)*/
       if (count === 1) {
         // Assign first guess
         firstGuess = clicked.parentNode.dataset.name;
-        console.log(firstGuess); //afficher dans la console pour s'y retrouver
         clicked.parentNode.classList.add("selected"); // màj de la classe css en "card selected"
       } else {
         // Assign second guess
         secondGuess = clicked.parentNode.dataset.name;
-        console.log(secondGuess);
         clicked.parentNode.classList.add("selected");
       }
       // If both guesses are not empty...
       if (firstGuess !== "" && secondGuess !== "") {
+        score++;
+        $affScore.innerHTML = `Nombre d'essais : ${score}`;
         // and the first guess matches the second match...
         if (firstGuess === secondGuess) {
-          score++;
-          console.log("score" + score);
+          nbGuess++;
+          console.log(nbGuess);
           setTimeout(match, delay - 600);
           setTimeout(resetGuesses, delay - 600);
         } else {
@@ -114,14 +117,17 @@ affScore = this.insertAdjacentHTML("afterbegin",`le score est de ${score}`)*/
       // Set previous target to clicked
       previousTarget = clicked;
     }
-console.log("score = " +score);
-  
-  if (score == nbreImages) {
-      alert("gagné");
+
+    if (nbGuess === nbreImages) {
+      $affScore.innerHTML = `Tu as gagné en ${score} coups, félicitations ! Appuie sur la barre d'espace pour rejouer.`;
+      document.addEventListener("keydown", (event) => {
+        if (event.code === "Space") {
+          event.preventDefault(); // Empêche le comportement par défaut (scrolling)
+          location.reload(); // Recharge la page
+        }
+      });
     }
-    
   });
-  
 }
 
 export { initGame };
