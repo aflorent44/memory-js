@@ -6,18 +6,9 @@ import {
   passwordValidator,
 } from "./validators.js";
 
-import { getDatas } from "./app.js"
+import { getDatas, setData } from "./app.js"
 
-function setData(key, data) {
-  // Get datas
-  const oldDatas = getDatas(key);
-  // Add datas
-  oldDatas.push(data);
-  // Get data from LS in param and display it in nodeID
-  localStorage.setItem(key, JSON.stringify(oldDatas));
 
-  return oldDatas;
-}
 
 function signUpForm(signUpForm) {
   document.addEventListener("DOMContentLoaded", () => {
@@ -98,7 +89,7 @@ function signUpForm(signUpForm) {
         
         // Redirection après une courte pause (pour laisser le temps de voir le message)
         setTimeout(() => {
-          location = "./sign-in.html";
+          location = "./log-in.html";
         }, 1000);
       }
     });

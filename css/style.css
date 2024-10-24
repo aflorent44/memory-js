@@ -3,10 +3,11 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
+  height: 100vh;
 }
 
 header {
-  background-color: #baccee;
+  background-color: #aac1ec;
   color: white;
   padding: 10px 0;
   text-align: center;
@@ -23,7 +24,6 @@ nav.menu ul li {
 }
 
 nav.menu ul li a {
-  color: white;
   text-decoration: none;
   transition: color 0.3s;
 }
@@ -34,6 +34,7 @@ nav.menu ul li a:hover {
 
 
 main {
+  height: 85vw;
   max-width: 80vw;
   margin: 20px auto;
   background-color: white;
@@ -62,7 +63,7 @@ input[type="password"] {
 }
 
 button {
-  background-color: #baccee;
+  background-color: #85a7e6;
   color: white;
   padding: 10px;
   border: none;
@@ -72,7 +73,7 @@ button {
 }
 
 button:hover {
-  background-color: #baccee;
+  background-color: #85a7e6;
 }
 
 #errorMessage {
@@ -117,7 +118,7 @@ p a {
 }
 
 #index-btn {
-  background-color: #baccee;
+  background-color: #85a7e6;
   text-align: center;
 }
 
@@ -135,8 +136,6 @@ p a {
 }
 
 .card {
-  width: 100%;
-  height: 100%;
   position: relative;
   transition: all 0.4s linear;
   transform-style: preserve-3d;
@@ -163,7 +162,7 @@ p a {
 }
 
 .front {
-  background: #e5bf86 url("../images/question.svg") no-repeat center center /
+  background: #ecb25b url("../images/question.svg") no-repeat center center /
     contain;
 }
 
@@ -206,10 +205,41 @@ h1 {
     display: block;
     margin: 10px 0;
     text-align: center;
-    color: #baccee;
+    color: #85a7e6;
     text-decoration: none;
 }
 
 .link:hover {
     color: #4c63af
+}
+
+#menu-deroulant {
+  text-align: center;
+}
+
+select {
+    width: 100%; /* Prend toute la largeur du conteneur */
+    padding: 10px; /* Ajoute un peu d'espace à l'intérieur */
+    font-size: 16px; /* Taille de la police */
+    border: 1px solid #ccc; /* Bordure grise */
+    border-radius: 4px; /* Coins arrondis pour le select */
+    margin: 10px 0; /* Marge au-dessus et en dessous */
+    background-color: #fff; /* Couleur de fond */
+}
+
+#profile {
+    margin-bottom: 20px; /* Marge en bas du profil */
+}
+
+#links {
+    margin-top: 20px; /* Marge au-dessus des liens */
+}
+
+#brain img{
+  width: 30vw;
+}
+
+#brain {
+  display: flex;
+  justify-content: center;
 }

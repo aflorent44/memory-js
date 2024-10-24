@@ -1,13 +1,12 @@
 //**** Formulaire connexion  ****//
 
-import { getDatas } from "./app.js";
+import { getDatas, setData } from "./app.js";
 
 // Fonction pour récupérer un utilisateur par nom d'utilisateur
 function getUser(username) {
   // Récupérer la liste des utilisateurs du local storage
   const datas = getDatas("users");
-  //console.log(datas);
-
+  
   // Vérifier si des utilisateurs existent
   if (!datas) {
     console.log("Aucun utilisateur trouvé.");
@@ -21,30 +20,38 @@ function getUser(username) {
   return foundUser.length > 0 ? foundUser[0] : null;
 }
 
-function signInForm(signInForm) {
+
+let currentUserArray = []
+
+function logInForm(logInForm) {
   document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("signInForm");
+    const form = document.getElementById("logInForm");
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      const usernameSignIn = document.getElementById("username").value;
-      const passwordSignIn = document.getElementById("password").value;
+      const usernamelogIn = document.getElementById("username").value;
+      const passwordlogIn = document.getElementById("password").value;
 
       // Recherche de l'utilisateur
-      const user = getUser(usernameSignIn);
+      const userToTest = getUser(usernamelogIn);
 
-      if (user) {
-        if (passwordSignIn === user.pwd) {
-          alert("Connexion réussie !");
-          form.reset();
+      if (userToTest) {
+        if (passwordlogIn === userToTest.pwd) {
+          const currentUserData = {
+            currentUsername: usernamelogIn,
+            currentMail: userToTest.mail,
+          };
+          
+          currentUserArray=setData("currentUser", currentUserData);
+          
           location = "./profile.html";
         } else {
           // Afficher un message d'erreur
           errorMessage.textContent = "Mot de passe erroné.";
           errorMessage.classList.remove("hidden");
 
-          // Optionnel : reset l'input de mot de passe
+          // Reset l'input de mot de passe
           document.getElementById("password").value = "";
         }
       } else {
@@ -55,4 +62,4 @@ function signInForm(signInForm) {
   });
 }
 
-export { signInForm };
+export { logInForm };
