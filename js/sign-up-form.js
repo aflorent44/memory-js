@@ -1,14 +1,8 @@
 //**** Formulaire inscription  ****//
 
-import {
-  usernameValidator,
-  emailValidator,
-  passwordValidator,
-} from "./validators.js";
+import { usernameValidator, emailValidator } from "./validators.js";
 
-import { getDatas, setData } from "./app.js"
-
-
+import { setData } from "./app.js";
 
 function signUpForm(signUpForm) {
   document.addEventListener("DOMContentLoaded", () => {
@@ -86,7 +80,7 @@ function signUpForm(signUpForm) {
         messageDiv.textContent = "Inscription réussie !";
         form.reset();
         errorMessage.classList.add("hidden");
-        
+
         // Redirection après une courte pause (pour laisser le temps de voir le message)
         setTimeout(() => {
           location = "./log-in.html";

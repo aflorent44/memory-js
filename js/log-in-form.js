@@ -6,10 +6,9 @@ import { getDatas, setData } from "./app.js";
 function getUser(username) {
   // Récupérer la liste des utilisateurs du local storage
   const datas = getDatas("users");
-  
+
   // Vérifier si des utilisateurs existent
   if (!datas) {
-    console.log("Aucun utilisateur trouvé.");
     return null;
   }
 
@@ -20,8 +19,7 @@ function getUser(username) {
   return foundUser.length > 0 ? foundUser[0] : null;
 }
 
-
-let currentUserArray = []
+let currentUserArray = [];
 
 function logInForm(logInForm) {
   document.addEventListener("DOMContentLoaded", () => {
@@ -42,9 +40,9 @@ function logInForm(logInForm) {
             currentUsername: usernamelogIn,
             currentMail: userToTest.mail,
           };
-          
-          currentUserArray=setData("currentUser", currentUserData);
-          
+
+          currentUserArray = setData("currentUser", currentUserData);
+
           location = "./profile.html";
         } else {
           // Afficher un message d'erreur
