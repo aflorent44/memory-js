@@ -41,7 +41,7 @@ function handleMenuSelection(select) {
 }
 
 function build(param, game) {
-  const nbreImages = 8;
+  const nbreImages = 4;
   const cardsArray = createCardsArray(param, nbreImages);
   const grid = createGameGrid(cardsArray);
   game.appendChild(grid);
@@ -59,7 +59,7 @@ function createGameGrid(cardsArray) {
   document.getElementById("board").innerHTML = "";
   const grid = document.createElement("section");
   grid.classList.add("grid");
-  const gameGrid = [...cardsArray, ...cardsArray].sort(
+  const gameGrid = [...cardsArray, ...cardsArray].sort(     //concaténation des images
     () => 0.5 - Math.random()
   );
 
@@ -132,9 +132,14 @@ function setupGameLogic(grid, nbreImages) {
 
   function checkForMatch(first, second, grid, delay, $affScore, nbreImages) {
     if (first === second) {
-      score++;
       nbGuess++;
       $affScore.innerHTML = `Nombre de coups : ${nbGuess}`;
+      score++;
+      console.log(score);
+      if (score === nbreImages) {
+        $affScore.innerHTML = `<h2>Bravo, tu as gagné en ${nbGuess} coups ! Appuie sur la barre d'espace pour rejouer.</h2>`;
+        setupRestart();
+      }
       setTimeout(() => {
         document
           .querySelectorAll(".selected")
@@ -144,11 +149,7 @@ function setupGameLogic(grid, nbreImages) {
     } else {
       nbGuess++;
       $affScore.innerHTML = `Nombre de coups : ${nbGuess}`;
-      setTimeout(resetGuesses, delay);
-    }
-    if (score === nbreImages) {
-      $affScore.innerHTML = `<h2>Bravo, tu as gagné en ${nbGuess} coups ! Appuie sur la barre d'espace pour rejouer.</h2>`;
-      setupRestart();
+      setTimeout(resetGuesses, delay-200);
     }
   }
 
